@@ -1,23 +1,24 @@
 import RecipeItem from "./recipe-item/RecipeItem.tsx";
 import Header from "./header/Header.tsx";
+import User from "./user/User.tsx";
+import {useGetRecipesQuery} from "../store/api/api.ts";
+import CreateRecipe from "./create-recipe/CreateRecipe.tsx";
 
 function App() {
-  return (
+    const { isLoading, data } = useGetRecipesQuery();
+
+    return (
     <>
         <Header/>
+        {/*<User/>*/}
+        <CreateRecipe/>
         <section>
-            <RecipeItem recipe={{
-                id: 1,
-                name: "Лазанья"
-            }}/>
-            <RecipeItem recipe={{
-                id: 2,
-                name: "Каша"
-            }}/>
-            <RecipeItem recipe={{
-                id: 3,
-                name: "Паста"
-            }}/>
+            {isLoading ?
+                (<h1>Loading...</h1>)
+                : (data.map(recipe => (
+                    <RecipeItem key={recipe.id} recipe={recipe}/>
+                )))
+            }
         </section>
     </>
   )

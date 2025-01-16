@@ -1,27 +1,30 @@
-import {useSelector} from "react-redux";
 import {useActions} from "../../hooks/useActions.ts";
+import {useFavorites} from "../../hooks/useFavorites.ts";
 
 interface IProps {
     recipe: {
         id: number
         name: string
+        image: string
     }
 }
 
 const RecipeItem = ({recipe}: IProps) => {
-    const {favorites} = useSelector((state: {favorites: { id: number, name: string }[]}) => state);
+    const { favorites } = useFavorites();
 
     const { toggleFavorites } = useActions();
 
     const isExists = favorites.some(r => r.id === recipe.id);
 
     return (
-        <div className="bg-[#363636] rounded m-2.5 p-2.5">
-            {/*<img src="" alt=""/>*/}
-            <h2 className="mb-1.5">{recipe.name}</h2>
-            <button onClick={() => toggleFavorites(recipe)}>
-                {isExists ? 'Remove from' : 'Add to'} favorites
-            </button>
+        <div className="bg-[#363636] rounded m-2.5 p-2.5 flex gap-5 items-center">
+            <img className={"rounded-2xl"} src={recipe.image} alt={recipe.name} width={150}/>
+            <div>
+                <h2 className="mb-1.5">{recipe.name}</h2>
+                <button onClick={() => toggleFavorites(recipe)}>
+                    {isExists ? 'Remove from' : 'Add to'} favorites
+                </button>
+            </div>
         </div>
     );
 };
