@@ -1,7 +1,6 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
 @layer components {
   body {
     background: #202020;
@@ -10,8 +9,10 @@
   }
   button {
     @apply border-none outline-0 text-white py-1 px-2 rounded mt-1.5 bg-[#e08594] cursor-pointer duration-[.4s] ease-in-out;
-    &:hover {
-      background-color: rgba(224, 133, 148, 0.78);
-    }
+  }
+  button:hover {
+    background-color: rgba(224, 133, 148, 0.78);
   }
 }
+
+/*# sourceMappingURL=index.css.map */
