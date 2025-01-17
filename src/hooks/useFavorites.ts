@@ -1,14 +1,7 @@
-import {useSelector} from "react-redux";
-
-type IProps = {
-    favorites: {
-        id: number
-        name: string
-    }[]
-}
+import {useTypedSelector} from "./useTypedSelector.ts";
 
 export const useFavorites = () => {
-    const {favorites} = useSelector((state: IProps) => state);
+    const {favorites} = useTypedSelector((state) => state);
 
     return { favorites };
 }

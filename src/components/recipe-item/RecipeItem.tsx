@@ -1,15 +1,12 @@
 import {useActions} from "../../hooks/useActions.ts";
 import {useFavorites} from "../../hooks/useFavorites.ts";
+import {IRecipe} from "../../types/recipe.types.ts";
 
-interface IProps {
-    recipe: {
-        id: number
-        name: string
-        image: string
-    }
+interface IRecipeItem {
+    recipe: IRecipe
 }
 
-const RecipeItem = ({recipe}: IProps) => {
+const RecipeItem = ({recipe}: IRecipeItem) => {
     const { favorites } = useFavorites();
 
     const { toggleFavorites } = useActions();

@@ -1,22 +1,9 @@
-import {useSelector} from "react-redux";
 import {useActions} from "../../hooks/useActions.ts";
-
-interface IProps {
-    user: {
-        name: string
-        id: number
-        isLoading: boolean
-        error: Error | null
-        user: {
-            name: string
-            id: number
-        }
-    }
-}
+import {useTypedSelector} from "../../hooks/useTypedSelector.ts";
 
 const User = () => {
-    const { isLoading, error, user } = useSelector((state:IProps) => state.user)
-    console.log(isLoading, error, user)
+    const { isLoading, error, user } = useTypedSelector((state) => state.user)
+
     const { getUserById } = useActions();
 
     return (
